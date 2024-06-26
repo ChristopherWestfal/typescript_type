@@ -12,7 +12,9 @@ const s1:Student = {
     age: 15,
     grade: ["A","3","F","1","2","*","3","3"],
     printStudent: function(){
-        console.log(`${this.firstname} ${this.lastname} (${this.age})\n========================\nGrades: ${this.grade}`);
+        let temp:string = highlightFunction(this.firstname, this.lastname, this.age);
+
+        console.log(`${this.firstname} ${this.lastname} (${this.age})\n${temp}\nGrades: ${this.grade}`);
     }
 };
 
@@ -25,7 +27,9 @@ const studentlist:Student[] = [
         age: 16,
         grade: ["1", "4", "3", "1", "A", "*", "1", "2"],
         printStudent: function () {
-            console.log(`${this.firstname} ${this.lastname} (${this.age})\n========================\nGrades: ${this.grade}`);
+            let temp:string = highlightFunction(this.firstname, this.lastname, this.age);
+
+            console.log(`${this.firstname} ${this.lastname} (${this.age})\n${temp}\nGrades: ${this.grade}`);
         }
     },
     {
@@ -34,7 +38,9 @@ const studentlist:Student[] = [
         age: 17,
         grade: ["A", "*", "1"],
         printStudent: function () {
-            console.log(`${this.firstname} ${this.lastname} (${this.age})\n========================\nGrades: ${this.grade}`);
+            let temp:string = highlightFunction(this.firstname, this.lastname, this.age);
+
+            console.log(`${this.firstname} ${this.lastname} (${this.age})\n${temp}\nGrades: ${this.grade}`);
         }
     },
     {
@@ -43,9 +49,21 @@ const studentlist:Student[] = [
         age: 17,
         grade: ["A", "1", "*", "3", "2", "4", "5"],
         printStudent: function () {
-            console.log(`${this.firstname} ${this.lastname} (${this.age})\n========================\nGrades: ${this.grade}`);
+            let temp:string = highlightFunction(this.firstname, this.lastname, this.age);
+
+            console.log(`${this.firstname} ${this.lastname} (${this.age})\n${temp}\nGrades: ${this.grade}`);
         }
     }
 ]
 
 studentlist.forEach(student => student.printStudent());
+
+function highlightFunction(firstname:string, lastname:string, age:number) : string {
+    let sum:number = firstname.length + lastname.length + age.toString().length;
+    let tempString:string = "";
+
+    for(let i = 0; i < sum; i++){
+        tempString = tempString + "=";
+    }
+    return tempString;
+}
